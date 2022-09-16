@@ -15,7 +15,7 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//front end routes
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,3 +32,10 @@ Route::group(["prefix"=>"admin","middleware"=>["isAdmin","auth","PreventBackHist
 Route::group(["prefix"=>"user","middleware"=>["isUser","auth","PreventBackHistory"]],function(){
     Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
 });
+
+//cart routes
+
+Route::get('/cart',function(){
+    return view('frontend.pages.cart');
+})->name('cart');
+?>
